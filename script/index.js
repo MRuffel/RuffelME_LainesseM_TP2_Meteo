@@ -5,7 +5,8 @@ let templates = {};
 let app_div = document.getElementById("app");
 
 
-function home(){
+function home()
+{
 
 let div = document.createElement('div');
 let link = document.createElement('a');
@@ -29,7 +30,7 @@ function about() {
     div.appendChild(link);
 
     app_div.appendChild(div);
-};
+}
 
 function route (path, template) {
     if (typeof template === 'function') {
@@ -40,11 +41,11 @@ function route (path, template) {
     } else {
         return;
     };
-};
+}
 
 function template (name, templateFunction) {
     return templates[name] = templateFunction;
-};
+}
 
 template('home', function(){
     home();
@@ -62,13 +63,13 @@ function resolveRoute(route) {
     } catch (e) {
         throw new Error(`Route ${route} not found`);
     };
-};
+}
 
 function router(evt) {
     let url = window.location.hash.slice(1) || '/';
     let route = resolveRoute(url);
 
     route();
-};
+}
 window.addEventListener('load', router);
 window.addEventListener('hashchange', router);
